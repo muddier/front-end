@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Nav } from "react-bootstrap";
+import axios from "axios";
 
 function SignIn(props) {
   const [show, setShow] = useState(true);
@@ -13,14 +14,33 @@ function SignIn(props) {
     password: ""
   });
 
-  const [errorMsg, setErrorMsg] = useState("");
+  const [mainErrorMsg, setMainErrorMsg] = useState("");
 
-  const handleChange = () => {
-    console.log("hello");
+  const handleChange = e => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
+    });
   };
 
-  const handleSubmit = () => {
-    console.log("hi");
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (user.username === "" || user.password === "") {
+      setMainErrorMsg("Username/Password required");
+      return;
+    }
+    axios
+      .post("https://mudierthegame.herokuapp.com/api/login/", user)
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("key", res.data.key);
+        //TO DO - game component
+        props.history.push("/game");
+      })
+      .catch(err => {
+        console.log(err.response);
+        setMainErrorMsg(err.response.data.non_field_errors);
+      });
   };
 
   return (
@@ -45,8 +65,8 @@ function SignIn(props) {
               value={user.password}
               name="password"
             />
-            {errorMsg ? (
-              <Form.Text className="text-muted">{errorMsg}</Form.Text>
+            {mainErrorMsg ? (
+              <Form.Text className="text-muted">{mainErrorMsg}</Form.Text>
             ) : null}
             <Button
               block

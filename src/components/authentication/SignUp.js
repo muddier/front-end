@@ -9,6 +9,7 @@ function SignUp(props) {
     password2: ""
   });
   const [mainErrorMsg, setMainErrorMsg] = useState("");
+  const [subErrorMsg, setSubErrorMsg] = useState([]);
   const [show, setShow] = useState(true);
 
   const handleClose = () => {
@@ -36,6 +37,7 @@ function SignUp(props) {
       .catch(err => {
         console.log(err.response);
         setMainErrorMsg(err.response.data.username[0]);
+        setSubErrorMsg(err.response.data.password1);
       });
   };
 
@@ -71,6 +73,15 @@ function SignUp(props) {
             {mainErrorMsg ? (
               <Form.Text className="text-muted">{mainErrorMsg}</Form.Text>
             ) : null}
+            {subErrorMsg.length > 0
+              ? subErrorMsg.map((msg, index) => {
+                  return (
+                    <Form.Text className="text-muted" key={index}>
+                      {msg}
+                    </Form.Text>
+                  );
+                })
+              : null}
             <Button
               block
               size="lg"
