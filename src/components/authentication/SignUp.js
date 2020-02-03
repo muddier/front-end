@@ -57,11 +57,26 @@ function SignUp(props) {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose} centered>
-        <Modal.Header closeButton>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        centered
+        style={{ color: "#fff" }}
+      >
+        <Modal.Header
+          closeButton
+          style={{
+            background: "#000",
+            borderBottom: "none"
+          }}
+        >
           <Modal.Title>Create Account</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body
+          style={{
+            background: "#000"
+          }}
+        >
           <Form onSubmit={handleSubmit}>
             <Form.Label>username</Form.Label>
             <Form.Control
@@ -69,6 +84,11 @@ function SignUp(props) {
               onChange={handleChange}
               value={user.username}
               name="username"
+              style={{
+                background: "#000",
+                color: "#fff",
+                border: "1px solid #1C16AA"
+              }}
             />
             <Form.Label>password</Form.Label>
             <Form.Control
@@ -76,6 +96,11 @@ function SignUp(props) {
               onChange={handleChange}
               value={user.password1}
               name="password1"
+              style={{
+                background: "#000",
+                color: "#fff",
+                border: "1px solid #1C16AA"
+              }}
             />
             <Form.Label>confirm password</Form.Label>
             <Form.Control
@@ -83,6 +108,11 @@ function SignUp(props) {
               onChange={handleChange}
               value={user.password2}
               name="password2"
+              style={{
+                background: "#000",
+                color: "#fff",
+                border: "1px solid #1C16AA"
+              }}
             />
             {mainErrorMsg ? (
               <Form.Text className="text-muted">{mainErrorMsg}</Form.Text>
@@ -101,7 +131,7 @@ function SignUp(props) {
               size="lg"
               style={{
                 marginTop: "20px",
-                backgroundColor: "#EDFF86"
+                backgroundColor: "#FFF904"
               }}
               variant="none"
               type="submit"
@@ -111,7 +141,12 @@ function SignUp(props) {
             </Button>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer
+          style={{
+            background: "#000",
+            borderTop: "none"
+          }}
+        >
           <p>
             Already a user? Sign in{" "}
             <Nav.Link

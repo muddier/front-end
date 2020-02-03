@@ -6,8 +6,8 @@ import Home from "./components/Home";
 
 function App() {
   return (
-    <div className="App" style={{ textAlign: "center" }}>
-      <h1>Welcome to Muddier the Game</h1>
+    <div className="App" style={{ textAlign: "center", height: "100vh" }}>
+      <h1>Welcome to Space Beez</h1>
       <Route path="/" component={Home} />
       <Route path="/signup" component={SignUp} />
       <Route path="/signin" component={SignIn} />
