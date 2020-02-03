@@ -1,27 +1,42 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Nav } from "react-bootstrap";
+import axios from "axios";
 
 function SignUp(props) {
-  const [show, setShow] = useState(true);
-  const handleClose = () => {
-    setShow(false);
-    props.history.push("/");
-  };
-
   const [user, setUser] = useState({
     username: "",
     password1: "",
     password2: ""
   });
+  const [mainErrorMsg, setMainErrorMsg] = useState("");
+  const [show, setShow] = useState(true);
 
-  const [errorMsg, setErrorMsg] = useState("");
-
-  const handleChange = () => {
-    console.log("hello");
+  const handleClose = () => {
+    setShow(false);
+    props.history.push("/");
   };
 
-  const handleSubmit = () => {
-    console.log("hi");
+  const handleChange = e => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    axios
+      .post("https://mudierthegame.herokuapp.com/api/registration/", user)
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("key", res.data.key);
+        //TO DO - game component
+        props.history.push("/game");
+      })
+      .catch(err => {
+        console.log(err.response);
+        setMainErrorMsg(err.response.data.username[0]);
+      });
   };
 
   return (
@@ -53,8 +68,8 @@ function SignUp(props) {
               value={user.password2}
               name="password2"
             />
-            {errorMsg ? (
-              <Form.Text className="text-muted">{errorMsg}</Form.Text>
+            {mainErrorMsg ? (
+              <Form.Text className="text-muted">{mainErrorMsg}</Form.Text>
             ) : null}
             <Button
               block
