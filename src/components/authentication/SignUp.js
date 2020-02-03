@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import { Modal, Button, Form, Nav } from "react-bootstrap";
 import axios from "axios";
 
-function SignIn(props) {
+function SignUp(props) {
+  const [user, setUser] = useState({
+    username: "",
+    password1: "",
+    password2: ""
+  });
+  const [mainErrorMsg, setMainErrorMsg] = useState("");
+  const [subErrorMsg, setSubErrorMsg] = useState([]);
   const [show, setShow] = useState(true);
+
   const handleClose = () => {
     setShow(false);
     props.history.push("/");
   };
-
-  const [user, setUser] = useState({
-    username: "",
-    password: ""
-  });
-
-  const [mainErrorMsg, setMainErrorMsg] = useState("");
 
   const handleChange = e => {
     setUser({
@@ -25,12 +26,22 @@ function SignIn(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (user.username === "" || user.password === "") {
-      setMainErrorMsg("Username/Password required");
+    if (
+      user.username === "" ||
+      user.password1 === "" ||
+      user.password2 === ""
+    ) {
+      setMainErrorMsg(
+        "Username, password and confirm password fields are required"
+      );
+      return;
+    }
+    if (user.password1 !== user.password2) {
+      setMainErrorMsg("Password fields must match.");
       return;
     }
     axios
-      .post("https://mudierthegame.herokuapp.com/api/login/", user)
+      .post("https://mudierthegame.herokuapp.com/api/registration/", user)
       .then(res => {
         console.log(res);
         localStorage.setItem("key", res.data.key);
@@ -39,7 +50,9 @@ function SignIn(props) {
       })
       .catch(err => {
         console.log(err.response);
-        setMainErrorMsg(err.response.data.non_field_errors);
+        if (err.response.data.username)
+          setMainErrorMsg(err.response.data.username[0]);
+        setSubErrorMsg(err.response.data.password1);
       });
   };
 
@@ -58,7 +71,7 @@ function SignIn(props) {
             borderBottom: "none"
           }}
         >
-          <Modal.Title>Please Sign In</Modal.Title>
+          <Modal.Title>Create Account</Modal.Title>
         </Modal.Header>
         <Modal.Body
           style={{
@@ -82,8 +95,20 @@ function SignIn(props) {
             <Form.Control
               type="password"
               onChange={handleChange}
-              value={user.password}
-              name="password"
+              value={user.password1}
+              name="password1"
+              style={{
+                background: "#000",
+                color: "#fff",
+                border: "1px solid #1C16AA"
+              }}
+            />
+            <Form.Label>confirm password</Form.Label>
+            <Form.Control
+              type="password"
+              onChange={handleChange}
+              value={user.password2}
+              name="password2"
               style={{
                 background: "#000",
                 color: "#fff",
@@ -93,6 +118,15 @@ function SignIn(props) {
             {mainErrorMsg ? (
               <Form.Text className="text-muted">{mainErrorMsg}</Form.Text>
             ) : null}
+            {subErrorMsg
+              ? subErrorMsg.map((msg, index) => {
+                  return (
+                    <Form.Text className="text-muted" key={index}>
+                      {msg}
+                    </Form.Text>
+                  );
+                })
+              : null}
             <Button
               block
               size="lg"
@@ -104,7 +138,7 @@ function SignIn(props) {
               type="submit"
               onClick={e => handleSubmit(e)}
             >
-              Login
+              Get Started
             </Button>
           </Form>
         </Modal.Body>
@@ -115,10 +149,10 @@ function SignIn(props) {
           }}
         >
           <p>
-            New to Space Beez? Sign up{" "}
+            Already a user? Sign in{" "}
             <Nav.Link
               style={{ display: "inline", padding: "0" }}
-              href="/signup"
+              href="/signin"
             >
               here
             </Nav.Link>
@@ -130,4 +164,4 @@ function SignIn(props) {
   );
 }
 
-export default SignIn;
+export default SignUp;
