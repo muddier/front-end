@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Nav } from "react-bootstrap";
 
-function SignIn(props) {
+function SignUp(props) {
   const [show, setShow] = useState(true);
   const handleClose = () => {
     setShow(false);
@@ -10,7 +10,8 @@ function SignIn(props) {
 
   const [user, setUser] = useState({
     username: "",
-    password: ""
+    password1: "",
+    password2: ""
   });
 
   const [errorMsg, setErrorMsg] = useState("");
@@ -26,10 +27,10 @@ function SignIn(props) {
   return (
     <>
       <Modal show={show} onHide={handleClose} centered>
-        <Modal.Header closeButton style={{ background: "#fff" }}>
-          <Modal.Title>Please Sign In</Modal.Title>
+        <Modal.Header closeButton>
+          <Modal.Title>Create Account</Modal.Title>
         </Modal.Header>
-        <Modal.Body style={{ background: "#fff" }}>
+        <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Label>username</Form.Label>
             <Form.Control
@@ -42,8 +43,15 @@ function SignIn(props) {
             <Form.Control
               type="password"
               onChange={handleChange}
-              value={user.password}
-              name="password"
+              value={user.password1}
+              name="password1"
+            />
+            <Form.Label>confirm password</Form.Label>
+            <Form.Control
+              type="password"
+              onChange={handleChange}
+              value={user.password2}
+              name="password2"
             />
             {errorMsg ? (
               <Form.Text className="text-muted">{errorMsg}</Form.Text>
@@ -59,16 +67,16 @@ function SignIn(props) {
               type="submit"
               onClick={e => handleSubmit(e)}
             >
-              Login
+              Get Started
             </Button>
           </Form>
         </Modal.Body>
-        <Modal.Footer style={{ background: "#fff" }}>
+        <Modal.Footer>
           <p>
-            New to Muddier? Sign up{" "}
+            Already a user? Sign in{" "}
             <Nav.Link
               style={{ display: "inline", padding: "0" }}
-              href="/signup"
+              href="/signin"
             >
               here
             </Nav.Link>
@@ -80,4 +88,4 @@ function SignIn(props) {
   );
 }
 
-export default SignIn;
+export default SignUp;
