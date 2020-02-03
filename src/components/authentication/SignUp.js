@@ -26,6 +26,20 @@ function SignUp(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (
+      user.username === "" ||
+      user.password1 === "" ||
+      user.password2 === ""
+    ) {
+      setMainErrorMsg(
+        "Username, password and confirm password fields are required"
+      );
+      return;
+    }
+    if (user.password1 !== user.password2) {
+      setMainErrorMsg("Password fields must match.");
+      return;
+    }
     axios
       .post("https://mudierthegame.herokuapp.com/api/registration/", user)
       .then(res => {
