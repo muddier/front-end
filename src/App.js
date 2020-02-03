@@ -1,17 +1,18 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import PrivateRoute from "./components/utils/PrivateRoute";
 import SignIn from "./components/authentication/SignIn";
 import SignUp from "./components/authentication/SignUp";
 import Home from "./components/Home";
+import Game from "./components/game/Game";
 
 function App() {
   return (
     <div className="App" style={{ textAlign: "center", height: "100vh" }}>
-      <h1>Welcome to Space Beez</h1>
-      <Route path="/" component={Home} />
+      <Route exact path="/" component={Home} />
       <Route path="/signup" component={SignUp} />
       <Route path="/signin" component={SignIn} />
-      <Route path="/game" />
+      <PrivateRoute path="/game" component={Game} />
     </div>
   );
 }

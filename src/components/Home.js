@@ -6,6 +6,8 @@ function Home() {
     <div>
       <NavLink to="/signin">Sign In</NavLink>{" "}
       <NavLink to="/signup">Create Account</NavLink>
+      <h1>Welcome to Space Beez</h1>
+      <p>Sign in or Create a new account to start playing.</p>
     </div>
   );
 }

@@ -50,7 +50,8 @@ function SignUp(props) {
       })
       .catch(err => {
         console.log(err.response);
-        setMainErrorMsg(err.response.data.username[0]);
+        if (err.response.data.username)
+          setMainErrorMsg(err.response.data.username[0]);
         setSubErrorMsg(err.response.data.password1);
       });
   };
@@ -117,7 +118,7 @@ function SignUp(props) {
             {mainErrorMsg ? (
               <Form.Text className="text-muted">{mainErrorMsg}</Form.Text>
             ) : null}
-            {subErrorMsg.length > 0
+            {subErrorMsg
               ? subErrorMsg.map((msg, index) => {
                   return (
                     <Form.Text className="text-muted" key={index}>
