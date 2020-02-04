@@ -3,12 +3,12 @@ import Player from "./Player";
 import Map from "./Map";
 
 function World() {
-	return (
-		<div style={{ margin: "0 50px" }}>
-			<Player />
-			<Map />
-		</div>
-	);
+  return (
+    <div style={{}}>
+      <Map />
+      <Player />
+    </div>
+  );
 }
 
 export default World;
