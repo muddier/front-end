@@ -4,7 +4,7 @@ import Map from "./Map";
 
 function World() {
   return (
-    <div style={{}}>
+    <div style={{ position: "relative" }}>
       <Map />
       <Player />
     </div>

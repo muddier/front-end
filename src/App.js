@@ -8,16 +8,16 @@ import Game from "./components/game/Game";
 import { axiosWithAuth } from "./components/utils/axiosWithAuth";
 
 function App() {
-  useEffect(() => {
-    axiosWithAuth()
-      .get("https://mudierthegame.herokuapp.com/api/adv/coors/")
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axiosWithAuth()
+  //     .get("https://mudierthegame.herokuapp.com/api/adv/coors/")
+  //     .then(res => {
+  //       console.log(res);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   return (
     <div className="App" style={{ textAlign: "center", height: "100vh" }}>

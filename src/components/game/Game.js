@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import World from "./World";
+import Controls from "./Controls";
 
 function Game() {
   const [currentRoom, setCurrentRoom] = useState({});
   const [moveErrMsg, setMoveErrMsg] = useState("");
   useEffect(() => {
+    console.log("Hello");
     // set the player in the intial room
     axiosWithAuth()
       .get("https://mudierthegame.herokuapp.com/api/adv/init")
@@ -77,36 +79,7 @@ function Game() {
           </div>
         </div>
         <p>{moveErrMsg}</p>
-        <button
-          className="btn north"
-          onClick={e => moveRooms(e, "n")}
-          style={{ background: "white", margin: "5px" }}
-        >
-          N
-        </button>
-        <div>
-          <button
-            className="btn west"
-            onClick={e => moveRooms(e, "w")}
-            style={{ background: "white", margin: "5px 25px" }}
-          >
-            W
-          </button>
-          <button
-            className="btn east"
-            onClick={e => moveRooms(e, "e")}
-            style={{ background: "white", margin: "5px 30px" }}
-          >
-            E
-          </button>
-        </div>
-        <button
-          className="btn south"
-          onClick={e => moveRooms(e, "s")}
-          style={{ background: "white", margin: "5px" }}
-        >
-          S
-        </button>
+        <Controls moveRooms={moveRooms} />
       </div>
     </div>
   );

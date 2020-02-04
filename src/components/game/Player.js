@@ -11,7 +11,8 @@ function Player() {
         width: "40px",
         margin: "5px",
         position: "absolute",
-        top: "0"
+        bottom: "0",
+        left: "0"
       }}
     >
       <div

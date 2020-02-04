@@ -6,7 +6,7 @@ function Room({ room }) {
       style={{
         height: "40px",
         width: "40px",
-        background: `${room === 1 ? `white` : `none`}`,
+        background: `${room != null ? `white` : `none`}`,
         color: "black",
         display: "inline-flex",
         margin: "5px"
@@ -32,9 +32,9 @@ function Map() {
 
   useEffect(() => {
     setRooms([
-      [1, 1],
-      [1, 1],
-      [1, 0]
+      [(0, 2), (1, 2)],
+      [(0, 1), (1, 1)],
+      [(0, 0), null]
     ]);
   }, []);
 
