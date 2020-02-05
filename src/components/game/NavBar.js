@@ -9,7 +9,7 @@ function NavBar(props) {
     forceTLS: true
   });
 
-  let channel = pusher.subscribe('room-{}');
+  let channel = pusher.subscribe(`p-channel${props.currentRoom.uuid}`);
   channel.bind('broadcast', data => {
   alert(JSON.stringify(data));
   });
