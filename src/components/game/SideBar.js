@@ -9,6 +9,7 @@ function SideBar(props) {
           fontSize: "24px",
           background: "purple",
           margin: "20px",
+          padding: "10px",
           borderRadius: "10px"
         }}
       >
