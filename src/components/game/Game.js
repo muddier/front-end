@@ -6,14 +6,16 @@ import Controls from "./Controls";
 function Game() {
   const [currentRoom, setCurrentRoom] = useState({});
   const [moveErrMsg, setMoveErrMsg] = useState("");
+  const [nextRooms, setNextRooms] = useState([]);
+
   useEffect(() => {
-    console.log("Hello");
     // set the player in the intial room
     axiosWithAuth()
       .get("https://mudierthegame.herokuapp.com/api/adv/init")
       .then(res => {
         console.log("Response: ", res);
         setCurrentRoom(res.data);
+        setNextRooms(res.data.nextRooms);
       })
       .catch(err => {
         console.log(err.response);
@@ -30,12 +32,12 @@ function Game() {
         console.log(res);
         setCurrentRoom(res.data);
         setMoveErrMsg(res.data.error_msg);
+        setNextRooms(res.data.nextRooms);
       })
       .catch(err => {
         console.log(err.response);
       });
   };
-
   if (!currentRoom.players) return <h1>Loading...</h1>;
   return (
     <div
@@ -45,7 +47,6 @@ function Game() {
         alignItems: "center"
       }}
     >
-      <World />
       <div>
         <h2>Welcome {currentRoom.name}.</h2>
         <div style={{ display: "flex" }}>
@@ -79,8 +80,9 @@ function Game() {
           </div>
         </div>
         <p>{moveErrMsg}</p>
-        <Controls moveRooms={moveRooms} />
+        <Controls moveRooms={moveRooms} nextRooms={nextRooms} />
       </div>
+      <World />
     </div>
   );
 }

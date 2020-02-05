@@ -1,12 +1,14 @@
 import React from "react";
 
 function Controls(props) {
+  console.log(props.nextRooms[0]);
   return (
     <>
       <button
         className="btn north"
         onClick={e => props.moveRooms(e, "n")}
         style={{ background: "white", margin: "5px" }}
+        disabled={props.nextRooms["n"] === 0}
       >
         N
       </button>
