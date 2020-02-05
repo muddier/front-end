@@ -1,6 +1,19 @@
 import React from "react";
-
+import Pusher from 'pusher-js';
 function NavBar(props) {
+
+  Pusher.logToConsole = true;
+
+  const pusher = new Pusher('0eed8913739ddced563b', {
+    cluster: 'us2',
+    forceTLS: true
+  });
+
+  let channel = pusher.subscribe('room-{}');
+  channel.bind('broadcast', data => {
+  alert(JSON.stringify(data));
+  });
+
   return (
     <div
       className=""
