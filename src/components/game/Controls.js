@@ -19,7 +19,9 @@ function Controls(props) {
 
   if (!props.nextRooms) return;
   return (
-    <div style={{ margin: "10px" }}>
+    <div
+      style={{ margin: "10px", background: "#000", borderRadius: "0 0 10px 0" }}
+    >
       <p>{props.moveErrorMsg}</p>
       <button
         className="btn north"

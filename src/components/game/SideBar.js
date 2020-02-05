@@ -2,7 +2,7 @@ import React from "react";
 
 function SideBar(props) {
   return (
-    <div>
+    <div style={{ background: "#000", borderRadius: "0 10px 0 0" }}>
       <p
         style={{
           fontFamily: "Major Mono Display",

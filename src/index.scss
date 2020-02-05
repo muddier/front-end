@@ -25,5 +25,11 @@ $other-font: "Righteous", cursive;
 .App h1 {
   color: purple;
   font-family: $title-font;
-  margin-bottom: 30px;
+  margin: 30px auto;
+  padding: 5px;
+  font-weight: bold;
+  border: 1px solid silver;
+  border-radius: 10px;
+  background: #000000;
+  width: 400px;
 }

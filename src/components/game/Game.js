@@ -66,7 +66,9 @@ function Game() {
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
+            background: "#000",
+            borderRadius: "0 10px 10px 0"
           }}
         >
           <SideBar currentRoom={currentRoom} />
