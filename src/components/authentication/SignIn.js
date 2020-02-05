@@ -33,6 +33,7 @@ function SignIn(props) {
       return;
     }
     axios
+      // .post('http://localhost:8000/api/login/', user)
       .post("https://mudierthegame.herokuapp.com/api/login/", user)
       .then(res => {
         console.log(res);

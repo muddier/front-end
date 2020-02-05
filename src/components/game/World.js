@@ -2,14 +2,16 @@ import React from "react";
 import Player from "./Player";
 import Map from "./Map";
 
-function World() {
+function World({currentRoom}) {
   return (
     <div
       style={{
-        position: "relative"
+        position: "relative",
+        overflowX: 'hidden',
+        overflowY: 'hidden',
       }}
     >
-      <Map />
+      <Map currentRoom={currentRoom}/>
       <Player />
     </div>
   );
