@@ -3,7 +3,21 @@ import React from "react";
 function SideBar(props) {
   return (
     <div>
-      <p>{props.currentRoom.name}</p>
+      <p style={{ fontFamily: "Major Mono Display", fontSize: "24px" }}>
+        {props.currentRoom.name}
+      </p>
+      <p
+        style={{
+          flex: 1,
+          textAlign: "center",
+          textTransform: "capitalize",
+          fontFamily: "Major Mono Display",
+          fontSize: "20px"
+        }}
+      >
+        <div>Room:</div>
+        {props.currentRoom.title}
+      </p>
       <p>Players in the room:</p>
       <ul
         style={{

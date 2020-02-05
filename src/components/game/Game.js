@@ -52,20 +52,27 @@ function Game() {
         margin: "0 auto"
       }}
     >
-      <NavBar currentRoom={currentRoom} />
       <div
         style={{
           display: "flex",
           flexDirection: "row-reverse",
-          justifyContent: "center"
+          justifyContent: "center",
+          margin: "10px"
         }}
       >
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between"
+          }}
+        >
           <SideBar currentRoom={currentRoom} />
           <Controls moveRooms={moveRooms} nextRooms={nextRooms} />
         </div>
         <World />
       </div>
+      <NavBar currentRoom={currentRoom} />
     </div>
   );
 }
