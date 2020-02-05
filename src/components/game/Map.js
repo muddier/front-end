@@ -22,7 +22,10 @@ function Row({ row }) {
   return (
     <div style={{ display: "flex" }}>
       {row.map((room, index) => {
-        return <Room key={index} room={room} />;
+        if (index < 19) {
+          return <Room key={index} room={room} />;
+        }
+        return null;
       })}
     </div>
   );
@@ -31,26 +34,18 @@ function Row({ row }) {
 function Map() {
   const [rooms, setRooms] = useState([]);
 
-  //   useEffect(() => {
-  //     setRooms([
-  //       [1, 1],
-  //       [1, 1],
-  //       [1, 0]
-  //     ]);
-  //   }, []);
-
   useEffect(() => {
     axiosWithAuth()
       .get("https://mudierthegame.herokuapp.com/api/adv/matrix")
       .then(res => {
-        console.log(res);
-        setRooms(res.data.matrix);
+        // console.log(res);
+        setRooms(res.data.matrix.slice(38, 50));
       })
       .catch(err => {
         console.log(err);
       });
   }, []);
-
+  console.log(rooms);
   return (
     <div
       style={{

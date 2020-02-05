@@ -1,7 +1,7 @@
 import React from "react";
 
 function Controls(props) {
-  console.log(props.nextRooms[0]);
+  // console.log(props.nextRooms[0]);
   return (
     <>
       <button
