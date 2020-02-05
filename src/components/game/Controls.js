@@ -4,6 +4,8 @@ function Controls(props) {
   const [directions, setDirections] = useState([]);
 
   useEffect(() => {
+    // TO DO set a loading status so fast clicks won't error out
+    // before new nextRooms list is made
     if (props.nextRooms && props.nextRooms.length > 0) {
       const canMove = [
         props.nextRooms[0]["n"],
@@ -17,7 +19,8 @@ function Controls(props) {
 
   if (!props.nextRooms) return;
   return (
-    <div>
+    <div style={{ margin: "10px" }}>
+      <p>{props.moveErrorMsg}</p>
       <button
         className="btn north"
         onClick={e => props.moveRooms(e, "n")}

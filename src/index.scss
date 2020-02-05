@@ -14,5 +14,16 @@ code {
 
 .App {
   background: #1d1d1d;
-  color: #fff;
+  color: #f8c129;
+}
+
+$main-font: "Roboto", sans-serif;
+$accent-font: "VT323", monospace;
+$title-font: "Major Mono Display", monospace;
+$other-font: "Righteous", cursive;
+
+.App h1 {
+  color: purple;
+  font-family: $title-font;
+  margin-bottom: 30px;
 }
