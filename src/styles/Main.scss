@@ -1,0 +1,10 @@
+$main-font: "Roboto", sans-serif;
+$accent-font: "VT323", monospace;
+$title-font: "Major Mono Display", monospace;
+$other-font: "Righteous", cursive;
+
+.App h1 {
+  color: purple;
+  font-family: $title-font;
+  margin-bottom: 30px;
+}
