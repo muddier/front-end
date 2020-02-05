@@ -1,0 +1,28 @@
+.chat-display {
+    min-height: 50%;
+    border: 5px solid #778678;
+    border-radius: 10px;
+    font-family: VT323;
+    background: #121D17;
+    color: #35A65A;
+    text-align: start;
+    padding: 5px 10px;
+    overflow: auto;
+    position: relative;
+    overflow: auto;    
+    max-height: 50%;
+    float: left;
+    width: 100%; 
+    transform: rotate(180deg);
+}
+
+input {
+    border: 5px solid #778678;
+    border-radius: 10px;
+    font-family: VT323;
+    background: #121D17;
+    color: #35A65A;
+    text-align: start;
+    padding: 5px 10px;
+    margin: 10px;
+}
