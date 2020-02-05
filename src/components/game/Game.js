@@ -14,6 +14,7 @@ function Game() {
   useEffect(() => {
     // set the player in the intial room
     axiosWithAuth()
+      // .get('http://localhost:8000/api/adv/init')
       .get("https://mudierthegame.herokuapp.com/api/adv/init")
       .then(res => {
         console.log("Response: ", res);
@@ -28,6 +29,9 @@ function Game() {
   const moveRooms = (e, direction) => {
     e.preventDefault();
     axiosWithAuth()
+      // .post('http://localhost:8000/api/adv/move', {
+      //   direction
+      // })
       .post("https://mudierthegame.herokuapp.com/api/adv/move", {
         direction
       })
@@ -69,6 +73,7 @@ function Game() {
             flexDirection: "column",
             justifyContent: "space-between",
             background: "#000",
+            width: '200px',
             borderRadius: "0 10px 10px 0"
           }}
         >
@@ -79,7 +84,7 @@ function Game() {
             moveErrMsg={moveErrMsg}
           />
         </div>
-        <World />
+        <World currentRoom={currentRoom}/>
       </div>
       <NavBar currentRoom={currentRoom} />
       <Chat roomId={currentRoom.roomId}/>

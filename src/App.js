@@ -6,6 +6,19 @@ import SignUp from "./components/authentication/SignUp";
 import Home from "./components/Home";
 import Game from "./components/game/Game";
 
+// import Pusher from 'pusher-js';
+
+// Pusher.logToConsole = true;
+// const pusher = new Pusher('0eed8913739ddced563b', {
+//       cluster: 'us2',
+//       forceTLS: true
+//     });
+
+// let channel = pusher.subscribe('room-{}');
+// channel.bind('broadcast', data => {
+//   console.log(JSON.stringify(data))
+// })
+
 function App() {
   return (
     <div
