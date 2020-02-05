@@ -31,11 +31,15 @@ function Room({ room }) {
   );
 }
 
-function Row({ row }) {
+function Row({ row, x_coor}) {
+
+  // const x = x_coor - 5 >= 0 ? x_coor - 5 : 0;
+  const x = x_coor
+
   return (
     <div style={{ display: "flex" }}>
       {row
-        .filter((el, index) => index < 18)
+        .slice(x, x + 10)
         .map((room, index) => {
           return <Room key={index} room={room} />;
         })}
@@ -43,20 +47,44 @@ function Row({ row }) {
   );
 }
 
-function Map() {
+function Map({ currentRoom }) {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
     axiosWithAuth()
+      // .get('http://localhost:8000/api/adv/matrix')
       .get("https://mudierthegame.herokuapp.com/api/adv/matrix")
       .then(res => {
-        // console.log(res);
-        setRooms(res.data.matrix.slice(40, 50));
+        console.log("Matrix Res", res);
+
+        // and 5 0's to the beginning of each row then, 
+        // Hack function that's just adding 5 rows at the top of 0
+        let matrix = res.data.matrix;
+
+        // Add 5 0's to the beginning of each row
+        for(let y = 0; y < matrix.length; y++){
+          for(let x = 0; x < 5; x++){
+            matrix[y].unshift(0)
+          }
+        }
+
+        // Add 5 rows to the top
+        for(let y = 0; y < 5; y++){
+          matrix.unshift([])
+          for(let x = 0; x < 55; x++){
+            matrix[0].push(0)
+          }
+        }
+
+        setRooms(res.data.matrix);
       })
       .catch(err => {
         console.log(err);
       });
   }, []);
+
+  // const y_coor = currentRoom.y_coor - 5 >= 0 ? currentRoom.y_coor - 5 : 0;
+  const y_coor = currentRoom.y_coor
 
   return (
     <div
@@ -64,11 +92,13 @@ function Map() {
         background: "#F89500",
         display: "flex",
         flexDirection: "column",
+        width: '540px',
+        height: '540px',
         borderRadius: "10px 0 0 10px"
       }}
     >
-      {rooms.map((row, index) => {
-        return <Row row={row} key={index} />;
+      {rooms.slice(y_coor, (y_coor + 10)).map((row, index) => {
+        return <Row row={row} key={index} x_coor={currentRoom.x_coor} />;
       })}
     </div>
   );
