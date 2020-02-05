@@ -7,13 +7,13 @@
     color: #35A65A;
     text-align: start;
     padding: 5px 10px;
-    overflow: auto;
     position: relative;
-    overflow: auto;    
+    overflow: hidden;    
     max-height: 50%;
     float: left;
-    width: 100%; 
+    min-width: 400px; 
     transform: rotate(180deg);
+    scrollbar-3dlight-color: #35A65A;
 }
 
 input {
