@@ -1,20 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import "../../styles/Map.scss";
+import honey from "../../assets/honey.svg";
 
 function Room({ room }) {
+  console.log(room);
   return (
-    <div
-      style={{
-        height: "40px",
-        width: "40px",
-        background: `${room ? `white` : `none`}`,
-        color: "black",
-        display: "inline-flex",
-        margin: "5px"
-      }}
-    >
-      {room}
-    </div>
+    <>
+      {room ? (
+        <img
+          src={honey}
+          alt="honeycomb"
+          style={{
+            height: "40px",
+            width: "40px",
+            display: "inline-flex",
+            margin: "5px"
+          }}
+        />
+      ) : (
+        <div
+          style={{
+            height: "40px",
+            width: "40px",
+            display: "inline-flex",
+            margin: "5px"
+          }}
+        />
+      )}
+    </>
   );
 }
 
@@ -22,7 +36,7 @@ function Row({ row }) {
   return (
     <div style={{ display: "flex" }}>
       {row.map((room, index) => {
-        if (index < 19) {
+        if (index < 16) {
           return <Room key={index} room={room} />;
         }
       })}
@@ -38,7 +52,7 @@ function Map() {
       .get("https://mudierthegame.herokuapp.com/api/adv/matrix")
       .then(res => {
         // console.log(res);
-        setRooms(res.data.matrix.slice(38, 50));
+        setRooms(res.data.matrix.slice(42, 50));
       })
       .catch(err => {
         console.log(err);
@@ -48,9 +62,10 @@ function Map() {
   return (
     <div
       style={{
-        background: "grey",
+        background: "#F89500",
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
+        borderRadius: "10px"
       }}
     >
       {rooms.map((row, index) => {

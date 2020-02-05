@@ -7,22 +7,25 @@ function NavBar(props) {
       className=""
       style={{
         display: "flex",
-        width: "78%",
         height: "auto",
         alignSelf: "flex-start",
-        margin: "0 0 0 3%",
-        padding: "15px 0"
+        margin: "10px 0 0 130px",
+        padding: "15px 0",
+        alignItems: "flex-end"
       }}
     >
-      <h5 style={{ flex: 1, textAlign: "center", textTransform: "capitalize" }}>
-        <span>ROOM:</span> {props.currentRoom.title}
-      </h5>
       <h5
         style={{
-          flex: 2,
-          textAlign: "start"
+          border: "5px solid #778678",
+          width: "760px",
+          fontFamily: "VT323",
+          background: "#121D17",
+          color: "#35A65A",
+          textAlign: "start",
+          padding: "5px 10px"
         }}
       >
+        <span style={{ color: "silver" }}> >>> Incoming Message:</span>{" "}
         {props.currentRoom.description}
       </h5>
     </div>
