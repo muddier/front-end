@@ -4,6 +4,7 @@ import World from "./World";
 import Controls from "./Controls";
 import NavBar from "./NavBar";
 import SideBar from "./SideBar";
+import Chat from './Chat';
 
 function Game() {
   const [currentRoom, setCurrentRoom] = useState({});
@@ -81,6 +82,7 @@ function Game() {
         <World />
       </div>
       <NavBar currentRoom={currentRoom} />
+      <Chat roomId={currentRoom.roomId}/>
     </div>
   );
 }
