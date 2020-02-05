@@ -5,7 +5,6 @@ import SignIn from "./components/authentication/SignIn";
 import SignUp from "./components/authentication/SignUp";
 import Home from "./components/Home";
 import Game from "./components/game/Game";
-import "./styles/Main.scss";
 
 function App() {
   return (

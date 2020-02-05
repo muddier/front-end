@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Nav } from "react-bootstrap";
 import axios from "axios";
+import Loader from "react-loader-spinner";
 
 function SignUp(props) {
   const [user, setUser] = useState({
@@ -10,6 +11,7 @@ function SignUp(props) {
   });
   const [mainErrorMsg, setMainErrorMsg] = useState("");
   const [subErrorMsg, setSubErrorMsg] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [show, setShow] = useState(true);
 
   const handleClose = () => {
@@ -26,6 +28,9 @@ function SignUp(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
+    setMainErrorMsg("");
+    setSubErrorMsg("");
+    setIsLoading(true);
     if (
       user.username === "" ||
       user.password1 === "" ||
@@ -43,13 +48,14 @@ function SignUp(props) {
     axios
       .post("https://mudierthegame.herokuapp.com/api/registration/", user)
       .then(res => {
-        console.log(res);
+        // console.log(res);
+        setIsLoading(false);
         localStorage.setItem("key", res.data.key);
-        //TO DO - game component
         props.history.push("/game");
       })
       .catch(err => {
         console.log(err.response);
+        setIsLoading(false);
         if (err.response.data.username)
           setMainErrorMsg(err.response.data.username[0]);
         setSubErrorMsg(err.response.data.password1);
@@ -67,7 +73,7 @@ function SignUp(props) {
         <Modal.Header
           closeButton
           style={{
-            background: "#000",
+            background: "#1d1d1d",
             borderBottom: "none"
           }}
         >
@@ -75,7 +81,7 @@ function SignUp(props) {
         </Modal.Header>
         <Modal.Body
           style={{
-            background: "#000"
+            background: "#1d1d1d"
           }}
         >
           <Form onSubmit={handleSubmit}>
@@ -86,9 +92,9 @@ function SignUp(props) {
               value={user.username}
               name="username"
               style={{
-                background: "#000",
+                background: "#1d1d1d",
                 color: "#fff",
-                border: "1px solid #1C16AA"
+                border: "1px solid #F8C129"
               }}
             />
             <Form.Label>password</Form.Label>
@@ -98,9 +104,9 @@ function SignUp(props) {
               value={user.password1}
               name="password1"
               style={{
-                background: "#000",
+                background: "#1d1d1d",
                 color: "#fff",
-                border: "1px solid #1C16AA"
+                border: "1px solid #F8C129"
               }}
             />
             <Form.Label>confirm password</Form.Label>
@@ -110,9 +116,9 @@ function SignUp(props) {
               value={user.password2}
               name="password2"
               style={{
-                background: "#000",
+                background: "#1d1d1d",
                 color: "#fff",
-                border: "1px solid #1C16AA"
+                border: "1px solid #F8C129"
               }}
             />
             {mainErrorMsg ? (
@@ -127,24 +133,30 @@ function SignUp(props) {
                   );
                 })
               : null}
+
             <Button
               block
               size="lg"
               style={{
                 marginTop: "20px",
-                backgroundColor: "#FFF904"
+                backgroundColor: "purple",
+                color: "#fff"
               }}
               variant="none"
               type="submit"
               onClick={e => handleSubmit(e)}
             >
-              Get Started
+              {isLoading ? (
+                <Loader type="ThreeDots" color="#fff" height={30} width={30} />
+              ) : (
+                "Get Started"
+              )}
             </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer
           style={{
-            background: "#000",
+            background: "#1d1d1d",
             borderTop: "none"
           }}
         >
