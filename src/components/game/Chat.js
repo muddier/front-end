@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Pusher from 'pusher-js';
 import { Button, Form } from "react-bootstrap";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-
+import './Chat.css';
 function Chat(props) {
     const [ message, setMessage ] = useState('')
     const [ chat, setChat ] = useState([])
@@ -38,24 +38,29 @@ function Chat(props) {
         setMessage(e.target.value)
     }
 
-    return ([
-
-            <Form onSubmit={handleSubmit}>
+    return (
+        <div className="chatbox"  >
+            <Form onSubmit={handleSubmit} style={{ height: "50%", display: "flex", flexDirection: "column", margin: "10px"}}>
+                <h5 className="chat-display">
+                <div style={{ transformOrigin: "50% 50%", transform: "rotate(180deg)", scrollBehavior:"reverseScroll()"}}>
+                What's the buzz?<br/>                
+                {chat.length !== 0 && chat.map(msg => {
+                    return <p><span style={{ color: "silver " }}>>>> {msg.user}: </span> {msg.message} </p>
+                })}
+                </div> 
+                </h5>
+                 
                 <input
                     name="chat"
                     value={message}
                     onChange={handleChange}
                     type="text"
                 />
-                <Button type="submit">Send</Button>
-            </Form>,
-            <div>
-                {chat.length !== 0 && chat.map(msg => {
-                    return <p>{msg.message}</p>
-                })}
-            </div>
-            
-    ])
+                <Button style={{backgroundColor: "purple", margin: "1rem 0" }}className="send-btn" type="submit">Send</Button>
+            </Form> 
+        </div>
+
+    )
 }
 
 export default Chat;
