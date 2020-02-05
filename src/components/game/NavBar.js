@@ -26,7 +26,7 @@ function NavBar(props) {
           padding: "5px 10px"
         }}
       >
-        <span style={{ color: "silver" }}> >>> Incoming Message:</span>{" "}
+        <span style={{ color: "silver" }}> >>> Space Echo:</span>{" "}
         {props.currentRoom.description}
       </h5>
     </div>
