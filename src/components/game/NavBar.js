@@ -16,6 +16,7 @@ function NavBar(props) {
       <h5
         style={{
           border: "5px solid #778678",
+          borderRadius: "10px",
           width: "760px",
           fontFamily: "VT323",
           background: "#121D17",
