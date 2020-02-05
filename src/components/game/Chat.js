@@ -43,7 +43,6 @@ function Chat(props) {
             <Form onSubmit={handleSubmit} style={{ height: "50%", display: "flex", flexDirection: "column", margin: "10px"}}>
                 <h5 className="chat-display">
                 <div style={{ transformOrigin: "50% 50%", transform: "rotate(180deg)", scrollBehavior:"reverseScroll()"}}>
-                What's the buzz?<br/>                
                 {chat.length !== 0 && chat.map(msg => {
                     return <p><span style={{ color: "silver " }}>>>> {msg.user}: </span> {msg.message} </p>
                 })}
@@ -51,10 +50,12 @@ function Chat(props) {
                 </h5>
                  
                 <input
+                    style={{ fontFamily: "VT323", fontSize: "1.3rem" }}
                     name="chat"
                     value={message}
                     onChange={handleChange}
                     type="text"
+                    placeholder=">>> What's the buzz?"
                 />
                 <Button style={{backgroundColor: "purple", margin: "1rem 0" }}className="send-btn" type="submit">Send</Button>
             </Form> 
