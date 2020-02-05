@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import World from "./World";
 import Controls from "./Controls";
+import NavBar from "./NavBar";
+import SideBar from "./SideBar";
 
 function Game() {
   const [currentRoom, setCurrentRoom] = useState({});
@@ -44,45 +46,26 @@ function Game() {
       style={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center"
+        alignItems: "center",
+        width: "65%",
+        minWidth: "1200px",
+        margin: "0 auto"
       }}
     >
-      <div>
-        <h2>Welcome {currentRoom.name}.</h2>
-        <div style={{ display: "flex" }}>
-          <div style={{ flex: 1, margin: "10px" }}>
-            <h3>You are currently in {currentRoom.title}.</h3>
-            <h4>{currentRoom.description}.</h4>
-          </div>
-          <div
-            style={{
-              border: "1px solid blue",
-              width: "50%",
-              display: "flex",
-              alignItems: "center",
-              flexDirection: "column",
-              paddingTop: "20px",
-              flex: 1,
-              margin: "10px"
-            }}
-          >
-            <h4>Other players in the room:</h4>
-            <ul
-              style={{
-                listStyleType: "none",
-                fontSize: "24px"
-              }}
-            >
-              {currentRoom.players.map((player, index) => {
-                return <li key={index}>{player}</li>;
-              })}
-            </ul>
-          </div>
+      <NavBar currentRoom={currentRoom} />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row-reverse",
+          justifyContent: "center"
+        }}
+      >
+        <div>
+          <SideBar currentRoom={currentRoom} />
+          <Controls moveRooms={moveRooms} nextRooms={nextRooms} />
         </div>
-        <p>{moveErrMsg}</p>
-        <Controls moveRooms={moveRooms} nextRooms={nextRooms} />
+        <World />
       </div>
-      <World />
     </div>
   );
 }

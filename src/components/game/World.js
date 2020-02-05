@@ -6,8 +6,7 @@ function World() {
   return (
     <div
       style={{
-        position: "relative",
-        margin: "20px"
+        position: "relative"
       }}
     >
       <Map />

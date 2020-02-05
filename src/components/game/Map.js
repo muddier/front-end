@@ -25,7 +25,6 @@ function Row({ row }) {
         if (index < 19) {
           return <Room key={index} room={room} />;
         }
-        return null;
       })}
     </div>
   );
@@ -45,7 +44,7 @@ function Map() {
         console.log(err);
       });
   }, []);
-  console.log(rooms);
+
   return (
     <div
       style={{
