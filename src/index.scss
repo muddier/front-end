@@ -14,5 +14,22 @@ code {
 
 .App {
   background: #1d1d1d;
-  color: #fff;
+  color: #f8c129;
+}
+
+$main-font: "Roboto", sans-serif;
+$accent-font: "VT323", monospace;
+$title-font: "Major Mono Display", monospace;
+$other-font: "Righteous", cursive;
+
+.App .title {
+  color: purple;
+  font-family: $title-font;
+  margin: 20px auto;
+  padding: 5px;
+  font-weight: bold;
+  border: 1px solid silver;
+  border-radius: 10px;
+  background: #000000;
+  width: 400px;
 }

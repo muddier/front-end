@@ -4,6 +4,8 @@ function Controls(props) {
   const [directions, setDirections] = useState([]);
 
   useEffect(() => {
+    // TO DO set a loading status so fast clicks won't error out
+    // before new nextRooms list is made
     if (props.nextRooms && props.nextRooms.length > 0) {
       const canMove = [
         props.nextRooms[0]["n"],
@@ -17,7 +19,14 @@ function Controls(props) {
 
   if (!props.nextRooms) return;
   return (
-    <div>
+    <div
+      style={{
+        margin: "10px",
+        background: "#000",
+        borderRadius: "0 0 10px 0"
+      }}
+    >
+      <p>{props.moveErrorMsg}</p>
       <button
         className="btn north"
         onClick={e => props.moveRooms(e, "n")}
@@ -25,7 +34,8 @@ function Controls(props) {
           background: `${directions[0] ? "purple" : "gray"}`,
           margin: "0 5px",
           height: "40px",
-          width: "40px"
+          width: "40px",
+          color: `${directions[0] ? "#f8c129" : "silver"}`
         }}
         disabled={!directions[0]}
       >
@@ -39,7 +49,8 @@ function Controls(props) {
             background: `${directions[3] ? "purple" : "gray"}`,
             margin: "5px 25px",
             height: "40px",
-            width: "40px"
+            width: "40px",
+            color: `${directions[3] ? "#f8c129" : "silver"}`
           }}
           disabled={!directions[3]}
         >
@@ -52,7 +63,8 @@ function Controls(props) {
             background: `${directions[1] ? "purple" : "gray"}`,
             margin: "5px 25px",
             height: "40px",
-            width: "40px"
+            width: "40px",
+            color: `${directions[1] ? "#f8c129" : "silver"}`
           }}
           disabled={!directions[1]}
         >
@@ -66,7 +78,8 @@ function Controls(props) {
           background: `${directions[2] ? "purple" : "gray"}`,
           margin: "0 5px",
           height: "40px",
-          width: "40px"
+          width: "40px",
+          color: `${directions[2] ? "#f8c129" : "silver"}`
         }}
         disabled={!directions[2]}
       >

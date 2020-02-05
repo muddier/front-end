@@ -57,18 +57,26 @@ function Game() {
           display: "flex",
           flexDirection: "row-reverse",
           justifyContent: "center",
-          margin: "10px"
+          margin: "10px",
+          border: "1px solid silver",
+          borderRadius: "10px"
         }}
       >
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
+            background: "#000",
+            borderRadius: "0 10px 10px 0"
           }}
         >
           <SideBar currentRoom={currentRoom} />
-          <Controls moveRooms={moveRooms} nextRooms={nextRooms} />
+          <Controls
+            moveRooms={moveRooms}
+            nextRooms={nextRooms}
+            moveErrMsg={moveErrMsg}
+          />
         </div>
         <World />
       </div>

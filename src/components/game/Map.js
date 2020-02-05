@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import "../../styles/Map.scss";
 import honey from "../../assets/honey.svg";
 
 function Room({ room }) {
-  console.log(room);
+  // console.log(room);
   return (
     <>
       {room ? (
@@ -35,11 +34,11 @@ function Room({ room }) {
 function Row({ row }) {
   return (
     <div style={{ display: "flex" }}>
-      {row.map((room, index) => {
-        if (index < 16) {
+      {row
+        .filter((el, index) => index < 18)
+        .map((room, index) => {
           return <Room key={index} room={room} />;
-        }
-      })}
+        })}
     </div>
   );
 }
@@ -52,7 +51,7 @@ function Map() {
       .get("https://mudierthegame.herokuapp.com/api/adv/matrix")
       .then(res => {
         // console.log(res);
-        setRooms(res.data.matrix.slice(42, 50));
+        setRooms(res.data.matrix.slice(40, 50));
       })
       .catch(err => {
         console.log(err);
@@ -65,7 +64,7 @@ function Map() {
         background: "#F89500",
         display: "flex",
         flexDirection: "column",
-        borderRadius: "10px"
+        borderRadius: "10px 0 0 10px"
       }}
     >
       {rooms.map((row, index) => {

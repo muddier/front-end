@@ -1,5 +1,4 @@
 import React from "react";
-import "../../styles/NavBar.scss";
 
 function NavBar(props) {
   return (
@@ -8,8 +7,6 @@ function NavBar(props) {
       style={{
         display: "flex",
         height: "auto",
-        alignSelf: "flex-start",
-        margin: "10px 0 0 130px",
         padding: "15px 0",
         alignItems: "flex-end"
       }}
@@ -17,6 +14,7 @@ function NavBar(props) {
       <h5
         style={{
           border: "5px solid #778678",
+          borderRadius: "10px",
           width: "760px",
           fontFamily: "VT323",
           background: "#121D17",
