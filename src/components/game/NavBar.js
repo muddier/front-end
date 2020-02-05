@@ -7,8 +7,6 @@ function NavBar(props) {
       style={{
         display: "flex",
         height: "auto",
-        alignSelf: "flex-start",
-        margin: "10px 0 0 130px",
         padding: "15px 0",
         alignItems: "flex-end"
       }}

@@ -22,10 +22,10 @@ $accent-font: "VT323", monospace;
 $title-font: "Major Mono Display", monospace;
 $other-font: "Righteous", cursive;
 
-.App h1 {
+.App .title {
   color: purple;
   font-family: $title-font;
-  margin: 30px auto;
+  margin: 20px auto;
   padding: 5px;
   font-weight: bold;
   border: 1px solid silver;
