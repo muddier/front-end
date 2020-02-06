@@ -24,7 +24,7 @@ const Message = () => {
     }
 // console.log("Room data", props.charactersData)
     return (
-        <Form onSubmit={handleSubmit} style={{ height: "100%", display: "flex", flexDirection: "column", margin: "0px"}}>
+        <Form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", margin: "0px"}}>
         <input
             style={{ fontFamily: "VT323", fontSize: "1.3rem", margin: "10px" }}
             name="chat"

@@ -69,7 +69,6 @@ function Controls(props) {
             width: "40px",
             color: "white"
           }}
-          disabled={!directions[1]}
         >
           A
         </button>
