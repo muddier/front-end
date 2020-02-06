@@ -7,7 +7,7 @@ function Chat(props) {
     const [ message, setMessage ] = useState('')
     const [ chat, setChat ] = useState([])
     useEffect(() => {        
-        
+        setChat([])
         Pusher.logToConsole = true;
         
         const pusher = new Pusher('2dad5e9a4335ac2f740f', {
@@ -16,8 +16,9 @@ function Chat(props) {
         });
       
         let channel = pusher.subscribe(`room-${props.roomId}`);
+        
         channel.bind('broadcast', data => {
-        setChat(oldChat => [...oldChat, data])
+            setChat(oldChat => [...oldChat, data])
         });
     }, [props.roomId])
 
@@ -40,13 +41,13 @@ function Chat(props) {
 
     return (
         <div className="chatbox"  >
-            <Form onSubmit={handleSubmit} style={{ height: "50%", display: "flex", flexDirection: "column", margin: "10px"}}>
+            <Form onSubmit={handleSubmit} style={{ height: "100%", display: "flex", flexDirection: "column", margin: "10px"}}>
                 <h5 className="chat-display">
-                <div style={{ transformOrigin: "50% 50%", transform: "rotate(180deg)", scrollBehavior:"reverseScroll()"}}>
-                {chat.length !== 0 && chat.map(msg => {
-                    return <p><span style={{ color: "silver " }}>>>> {msg.user}: </span> {msg.message} </p>
-                })}
-                </div> 
+                    <div style={{ transformOrigin: "50% 50%", transform: "rotate(180deg)", scrollBehavior:"reverseScroll()"}}>
+                    {chat.length !== 0 && chat.map((msg, i) => {
+                        return <p key={i}><span style={{ color: "silver " }}>>>> {msg.user}: </span> {msg.message} </p>
+                    })}
+                    </div> 
                 </h5>
                  
                 <input
