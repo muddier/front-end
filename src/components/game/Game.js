@@ -5,11 +5,13 @@ import Controls from "./Controls";
 import NavBar from "./NavBar";
 import SideBar from "./SideBar";
 import Chat from './Chat';
-
+import Stats from './Stats.js'
 function Game() {
   const [currentRoom, setCurrentRoom] = useState({});
   const [moveErrMsg, setMoveErrMsg] = useState("");
   const [nextRooms, setNextRooms] = useState([]);
+  const [battleRes, setBattleRes] = useState({})
+  const [resultsMsg, setResultsMsg] = useState('')
 
   useEffect(() => {
     // set the player in the intial room
@@ -43,10 +45,34 @@ function Game() {
         return err
       });
   };
-  
+
+    const attackMonster = () => {
+      let honeyGained = null;
+      let xpGained = currentRoom.monster.xp;
+      let playerWeight = currentRoom.xp
+      let monsterWeight = currentRoom.monster.xp
+      let roll = Math.random(playerWeight, monsterWeight)
+      console.log(roll)
+      if (playerWeight- roll > monsterWeight - roll) {
+        honeyGained = currentRoom.monster.honeyGained
+        setResultsMsg("Battle won.")
+      } else {
+        honeyGained = currentRoom.monster.honeyLost
+        setResultsMsg("Battle lost.")
+      }
+      
+      axiosWithAuth()
+      .post("https://mudierthegame.herokuapp.com/api/adv/battle", {honeyGained, xpGained})  
+      .then(res => setBattleRes(res))
+      .catch(err => err)
+      
+    }
+  console.log('GAME', currentRoom)
+  console.log('BATTLERES', battleRes)
   if (!currentRoom.players) return <h1>Loading...</h1>;
   return (
     <main style={{ display: "flex", margin: "auto 0", justifyContent: "center" }}>
+    <Stats charactersData={currentRoom} battleRes={battleRes} resultsMsg={resultsMsg}/>
     <div
       style={{
         display: "flex",
@@ -81,14 +107,13 @@ function Game() {
             moveRooms={moveRooms}
             nextRooms={nextRooms}
             moveErrMsg={moveErrMsg}
+            attackMonster={attackMonster}
           />
         </div>
         <World currentRoom={currentRoom}/>
       </div>
-      <NavBar currentRoom={currentRoom} />
-      
     </div>
-    <Chat roomId={currentRoom.roomId}/>
+    <Chat charactersData={currentRoom}/>
     </main>
         );
 }
