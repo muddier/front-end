@@ -17,12 +17,11 @@ function Game() {
       // .get('http://localhost:8000/api/adv/init')
       .get("https://mudierthegame.herokuapp.com/api/adv/init")
       .then(res => {
-        console.log("Response: ", res);
         setCurrentRoom(res.data);
         setNextRooms(res.data.nextRooms);
       })
       .catch(err => {
-        console.log(err.response);
+        return err
       });
   }, []);
 
@@ -36,13 +35,12 @@ function Game() {
         direction
       })
       .then(res => {
-        console.log(res);
         setCurrentRoom(res.data);
         setMoveErrMsg(res.data.error_msg);
         setNextRooms(res.data.nextRooms);
       })
       .catch(err => {
-        console.log(err.response);
+        return err
       });
   };
   if (!currentRoom.players) return <h1>Loading...</h1>;

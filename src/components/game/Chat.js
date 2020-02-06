@@ -30,7 +30,7 @@ function Chat(props) {
             setMessage('')
         })
         .catch(err => {
-            console.log('there was a problem')
+            return err
         })
     }
 
