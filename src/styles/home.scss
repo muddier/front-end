@@ -1,0 +1,73 @@
+@keyframes circle {
+  to {
+    transform: rotate(-1turn);
+  }
+}
+
+@keyframes updown {
+  to {
+    transform: translateX(150px);
+  }
+}
+
+@keyframes updown2 {
+  to {
+    transform: translateX(200px);
+  }
+}
+
+.animation-ctr {
+  background-image: url(https://www.pngrepo.com/download/108670/beehive.png);
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 400px auto;
+  position: relative;
+}
+
+#bees {
+  position: absolute;
+  width: 10%;
+  height: 40%;
+  top: 0;
+  left: 40%;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  position: absolute;
+  display: block;
+  transform-origin: -100% center;
+  animation: circle 3s infinite linear;
+}
+
+#bees img:first-child {
+  width: 50%;
+  height: auto;
+  transform-origin: center top;
+  animation: updown 2s infinite alternate ease-in-out;
+  margin-top: 10%;
+}
+
+#bees img:last-child {
+  width: 50%;
+  height: auto;
+  transform-origin: center top;
+  animation: updown2 1.5s infinite alternate ease-in-out;
+  margin-top: 10%;
+}
+
+@keyframes bounce-4 {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+
+.spacebear {
+  position: relative;
+  top: 200px;
+  left: 20px;
+  animation: bounce-4 2s infinite alternate ease-in-out;
+}
