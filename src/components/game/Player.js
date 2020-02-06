@@ -1,5 +1,5 @@
 import React from "react";
-
+import spaceBear from '../../assets/spacesuit_bear.png';
 function Player() {
   return (
     <div
@@ -16,13 +16,9 @@ function Player() {
         transform: 'translate(-50%, -50%)'
       }}
     >
-      <div
-        style={{
-          borderRadius: "50%",
-          background: "red",
-          height: "20px",
-          width: "20px"
-        }}
+      <img 
+      src={spaceBear}
+      alt="space bear"
       />
     </div>
   );
