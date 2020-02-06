@@ -3,55 +3,57 @@ import { NavLink } from "react-router-dom";
 
 function Home() {
 	return (
-		<div>
+		<>
+			<div
+				style={{
+					display: "grid",
+					gridTemplateColumns: "60% 40%",
+					height: "400px",
+					border: "solid 1px silver",
+					borderRadius: "10px",
+					padding: "25px",
+					marginTop: "30px",
+					marginBottom: "50px",
+					backgroundColor: "black",
+					color: "#99E550",
+				}}
+			>
+				<div>
+					<h1>Animation!!!</h1>
+				</div>
+				<div>
+					<h2>Welcome to Space Beez!</h2>
+					<p>
+						Space ipsum it suddenly struck me that that tiny pea,
+						pretty and blue, was the Earth. I didn’t feel like a
+						giant. I felt very, very small.
+					</p>
+					<p>
+						Space ipsum it suddenly struck me that that tiny pea,
+						pretty and blue, was the Earth. I put up my thumb and
+						shut one eye, and my thumb blotted out the planet Earth.
+					</p>
+				</div>
+			</div>
 			<nav>
 				<NavLink
-					className='navlink'
 					style={{
 						fontSize: "24px",
-						margin: "20px",
-						color: "#f8c129",
-						border: "1px solid #f8c129",
-						padding: "10px",
-						borderRadius: "10px",
 						textDecoration: "none",
+						color: "purple",
+						margin: "20px auto",
+						fontWeight: "bold",
+						border: "1px solid silver",
+						borderRadius: "10px",
+						background: "black",
+						padding: "15px 100px",
 					}}
 					to='/signin'
 				>
-					Sign In
-				</NavLink>{" "}
-				<NavLink
-					style={{
-						fontSize: "24px",
-						margin: "20px",
-						background: "#F89500",
-						color: "#1d1d1d",
-						padding: "11px",
-						borderRadius: "10px",
-						textDecoration: "none",
-					}}
-					className='navlink'
-					to='/signup'
-				>
-					Create Account
-				</NavLink>
-				<NavLink
-					style={{
-						fontSize: "24px",
-						margin: "20px",
-						background: "#F89500",
-						color: "#1d1d1d",
-						padding: "11px",
-						borderRadius: "10px",
-						textDecoration: "none",
-					}}
-					className='navlink'
-					to='/leaderboard'
-				>
-					Leaderboard
+					Play Now!
 				</NavLink>
 			</nav>
-		</div>
+		</>
 	);
 }
 
