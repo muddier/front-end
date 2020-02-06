@@ -1,0 +1,24 @@
+.stats-box {
+    align-self: stretch;
+}
+
+.stats-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 430px;
+    min-width: 300px;
+    max-width: 300px; 
+    border: 5px solid #778678;
+    border-radius: 10px;
+    font-family: VT323;
+    background: #121D17;
+    color: #35A65A;
+    text-align: start;
+    padding: 5px 10px;
+    margin: 10px;
+}
+
+.hide-battle {
+    display: none;
+}
