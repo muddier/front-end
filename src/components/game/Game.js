@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import World from "./World";
 import Controls from "./Controls";
@@ -8,7 +8,7 @@ import Stats from './Stats.js'
 function Game() {
   const [currentRoom, setCurrentRoom] = useState({});
   const [battleRes, setBattleRes] = useState('');
-  const[resultsMsg, setResultsMsg] = useState('');
+
   useEffect(() => {
     // set the player in the intial room
     axiosWithAuth()
@@ -45,18 +45,14 @@ function Game() {
       let playerWeight = currentRoom.xp
       let monsterWeight = currentRoom.monster.xp
       let roll = Math.random(playerWeight, monsterWeight)
-      console.log(roll)
-      if (playerWeight- roll > monsterWeight - roll) {
-        honeyGained = currentRoom.monster.honeyGained
-        setResultsMsg("Battle won.")
-      } else {
-        honeyGained = currentRoom.monster.honeyLost
-        setResultsMsg("Battle lost.")
-      }
+
+      playerWeight- roll > monsterWeight - roll ?
+      honeyGained = currentRoom.monster.honeyGained :      
+      honeyGained = currentRoom.monster.honeyLost
       
       axiosWithAuth()
       .post("https://mudierthegame.herokuapp.com/api/adv/battle", {honeyGained, xpGained})  
-      .then(res => setBattleRes(res))
+      .then(res => setBattleRes(res.data))
       .catch(err => err)
       
     }
@@ -65,7 +61,7 @@ function Game() {
   if (!currentRoom.players) return <h1>Loading...</h1>;
   return (
     <main style={{ display: "flex", margin: "auto 0", justifyContent: "center" }}>
-      <Stats resultsMsg={resultsMsg} charactersData={currentRoom} />
+      <Stats charactersData={currentRoom} battleRes={battleRes} />
       <div
         style={{
           display: "flex",
@@ -100,6 +96,7 @@ function Game() {
               moveRooms={moveRooms}
               nextRooms={currentRoom.nextRooms}
               moveErrMsg={currentRoom.error_msg}
+              attackMonster={attackMonster}
             />
           </div>
           <World currentRoom={currentRoom}/>
