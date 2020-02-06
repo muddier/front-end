@@ -2,7 +2,7 @@
 
 Space Beez is a MUD style game using React.js for front-end and Django with Python for the back-end. Find our back-end documentation [here](https://github.com/muddier/CS-Build-Week-1/blob/master/README.md).
 
-You can play our deployed project at [www.spacebeez.netlify.com](https://www.spacebeez.netlify.com/).
+You can play our deployed project at [www.spacebeez.netlify.com](https://spacebeez.netlify.com/).
 
 ## Contributors
 
