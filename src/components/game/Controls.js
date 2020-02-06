@@ -47,7 +47,7 @@ function Controls(props) {
           onClick={e => props.moveRooms(e, "w")}
           style={{
             background: `${directions[3] ? "purple" : "gray"}`,
-            margin: "5px 25px",
+            margin: "5px",
             height: "40px",
             width: "40px",
             color: `${directions[3] ? "#f8c129" : "silver"}`
@@ -57,11 +57,25 @@ function Controls(props) {
           W
         </button>
         <button
+          className="btn attack"
+          onClick={e => props.attackMonster()}
+          style={{
+            background: "red",
+            margin: "10px 5px",
+            height: "40px",
+            width: "40px",
+            color: "white"
+          }}
+          disabled={!directions[1]}
+        >
+          A
+        </button>
+        <button
           className="btn east"
           onClick={e => props.moveRooms(e, "e")}
           style={{
             background: `${directions[1] ? "purple" : "gray"}`,
-            margin: "5px 25px",
+            margin: "5px",
             height: "40px",
             width: "40px",
             color: `${directions[1] ? "#f8c129" : "silver"}`
