@@ -1,6 +1,7 @@
 import React from "react";
 
 function SideBar(props) {
+  console.log('SIDEBAR PROPS', props)
   return (
     <div style={{ background: "#000", borderRadius: "0 10px 0 0" }}>
       <p
@@ -16,18 +17,27 @@ function SideBar(props) {
         {props.currentRoom.name}
       </p>
       <p
-        style={{
-          flex: 1,
-          textAlign: "center",
-          textTransform: "capitalize",
-          fontFamily: "Major Mono Display",
-          fontSize: "20px",
-          borderTop: "1px solid silver",
-          borderBottom: "1px solid silver",
-          padding: "10px 0"
-        }}
+      style={{
+        flex: 1,
+        textAlign: "center",
+        textTransform: "capitalize",
+        fontFamily: "Major Mono Display",
+        fontSize: "20px",
+        borderTop: "1px solid silver",
+      }}
       >
-        {props.currentRoom.title}
+      XP: {props.currentRoom.honey}
+      </p>
+      <p
+      style={{
+        flex: 1,
+        textAlign: "center",
+        textTransform: "capitalize",
+        fontFamily: "Major Mono Display",
+        fontSize: "20px",
+      }}
+      >
+      Honey: {props.currentRoom.xp}
       </p>
       <p style={{ color: "#F89500" }}>Players in the room:</p>
       <ul
