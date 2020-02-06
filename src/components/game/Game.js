@@ -4,6 +4,7 @@ import World from "./World";
 import Controls from "./Controls";
 import NavBar from "./NavBar";
 import SideBar from "./SideBar";
+import Chat from './Chat';
 
 function Game() {
   const [currentRoom, setCurrentRoom] = useState({});
@@ -46,14 +47,13 @@ function Game() {
   };
   if (!currentRoom.players) return <h1>Loading...</h1>;
   return (
+    <main style={{ display: "flex", margin: "auto 0", justifyContent: "center" }}>
     <div
       style={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        width: "65%",
-        minWidth: "1200px",
-        margin: "0 auto"
+        marginRight: "1rem"
       }}
     >
       <div
@@ -86,8 +86,11 @@ function Game() {
         <World currentRoom={currentRoom}/>
       </div>
       <NavBar currentRoom={currentRoom} />
+      
     </div>
-  );
+    <Chat roomId={currentRoom.roomId}/>
+    </main>
+        );
 }
 
 export default Game;
