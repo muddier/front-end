@@ -28,6 +28,7 @@ function Controls(props) {
     >
       <p>{props.moveErrorMsg}</p>
       <button
+        title="MOVE NORTH"
         className="btn north"
         onClick={e => props.moveRooms(e, "n")}
         style={{
@@ -43,6 +44,7 @@ function Controls(props) {
       </button>
       <div>
         <button
+          title="MOVE WEST"
           className="btn west"
           onClick={e => props.moveRooms(e, "w")}
           style={{
@@ -57,6 +59,7 @@ function Controls(props) {
           W
         </button>
         <button
+          title="ATTACK"
           className="btn attack"
           onClick={e => props.attackMonster()}
           style={{
@@ -71,6 +74,7 @@ function Controls(props) {
           A
         </button>
         <button
+          title="MOVE EAST"
           className="btn east"
           onClick={e => props.moveRooms(e, "e")}
           style={{
@@ -86,6 +90,7 @@ function Controls(props) {
         </button>
       </div>
       <button
+        title="MOVE SOUTH"
         className="btn south"
         onClick={e => props.moveRooms(e, "s")}
         style={{
