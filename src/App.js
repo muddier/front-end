@@ -5,6 +5,7 @@ import SignIn from "./components/authentication/SignIn";
 import SignUp from "./components/authentication/SignUp";
 import Home from "./components/Home";
 import Game from "./components/game/Game";
+import MainNavigation from "./components/MainNavigation";
 
 // import Pusher from 'pusher-js';
 
@@ -29,6 +30,7 @@ function App() {
         padding: "25px"
       }}
     >
+      <MainNavigation />
       <h1 className="title">Space Beez</h1>
       <Route exact path="/" component={Home} />
       <Route path="/signup" component={SignUp} />
