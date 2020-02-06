@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import World from "./World";
 import Controls from "./Controls";
@@ -45,6 +45,7 @@ function Game() {
         console.log(err.response);
       });
   };
+  
   if (!currentRoom.players) return <h1>Loading...</h1>;
   return (
     <main style={{ display: "flex", margin: "auto 0", justifyContent: "center" }}>
@@ -56,6 +57,7 @@ function Game() {
         marginRight: "1rem"
       }}
     >
+
       <div
         style={{
           display: "flex",
