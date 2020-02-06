@@ -2,17 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import World from "./World";
 import Controls from "./Controls";
-import NavBar from "./NavBar";
 import SideBar from "./SideBar";
 import Chat from './Chat';
 import Stats from './Stats.js'
 function Game() {
   const [currentRoom, setCurrentRoom] = useState({});
-  const [moveErrMsg, setMoveErrMsg] = useState("");
-  const [nextRooms, setNextRooms] = useState([]);
-  const [battleRes, setBattleRes] = useState({})
-  const [resultsMsg, setResultsMsg] = useState('')
-
+  const [battleRes, setBattleRes] = useState('');
+  const[resultsMsg, setResultsMsg] = useState('');
   useEffect(() => {
     // set the player in the intial room
     axiosWithAuth()
@@ -20,7 +16,6 @@ function Game() {
       .get("https://mudierthegame.herokuapp.com/api/adv/init")
       .then(res => {
         setCurrentRoom(res.data);
-        setNextRooms(res.data.nextRooms);
       })
       .catch(err => {
         return err
@@ -38,8 +33,6 @@ function Game() {
       })
       .then(res => {
         setCurrentRoom(res.data);
-        setMoveErrMsg(res.data.error_msg);
-        setNextRooms(res.data.nextRooms);
       })
       .catch(err => {
         return err
@@ -72,50 +65,50 @@ function Game() {
   if (!currentRoom.players) return <h1>Loading...</h1>;
   return (
     <main style={{ display: "flex", margin: "auto 0", justifyContent: "center" }}>
-    <Stats charactersData={currentRoom} battleRes={battleRes} resultsMsg={resultsMsg}/>
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        marginRight: "1rem"
-      }}
-    >
-
+      <Stats resultsMsg={resultsMsg} charactersData={currentRoom} />
       <div
         style={{
           display: "flex",
-          flexDirection: "row-reverse",
-          justifyContent: "center",
-          margin: "10px",
-          border: "1px solid silver",
-          borderRadius: "10px"
+          flexDirection: "column",
+          alignItems: "center",
+          marginRight: "1rem"
         }}
       >
+
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            background: "#000",
-            width: '200px',
-            borderRadius: "0 10px 10px 0"
+            flexDirection: "row-reverse",
+            justifyContent: "center",
+            margin: "10px",
+            border: "1px solid silver",
+            borderRadius: "10px"
           }}
         >
-          <SideBar currentRoom={currentRoom} />
-          <Controls
-            moveRooms={moveRooms}
-            nextRooms={nextRooms}
-            moveErrMsg={moveErrMsg}
-            attackMonster={attackMonster}
-          />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              background: "#000",
+              width: '200px',
+              borderRadius: "0 10px 10px 0"
+            }}
+          >
+            <SideBar currentRoom={currentRoom} />
+            <Controls
+              moveRooms={moveRooms}
+              nextRooms={currentRoom.nextRooms}
+              moveErrMsg={currentRoom.error_msg}
+            />
+          </div>
+          <World currentRoom={currentRoom}/>
         </div>
-        <World currentRoom={currentRoom}/>
+        
       </div>
-    </div>
-    <Chat charactersData={currentRoom}/>
-    </main>
-        );
+      <Chat roomId={currentRoom.roomId} charactersData={currentRoom}/>
+      </main>
+  );
 }
 
 export default Game;
