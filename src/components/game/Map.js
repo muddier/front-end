@@ -39,7 +39,7 @@ function Row({ row, x_coor}) {
   return (
     <div style={{ display: "flex" }}>
       {row
-        .slice(x, x + 10)
+        .slice(x, x + 11)
         .map((room, index) => {
           return <Room key={index} room={room} />;
         })}
@@ -92,12 +92,12 @@ function Map({ currentRoom }) {
         background: "#F89500",
         display: "flex",
         flexDirection: "column",
-        width: '540px',
-        height: '540px',
+        width: '550px',
+        height: '550px',
         borderRadius: "10px 0 0 10px"
       }}
     >
-      {rooms.slice(y_coor, (y_coor + 10)).map((row, index) => {
+      {rooms.slice(y_coor, (y_coor + 11)).map((row, index) => {
         return <Row row={row} key={index} x_coor={currentRoom.x_coor} />;
       })}
     </div>
