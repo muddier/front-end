@@ -1,20 +1,20 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
 
 .App {
-  background: #1d1d1d;
-  color: #f8c129;
+	background: #1d1d1d;
+	color: #f8c129;
 }
 
 $main-font: "Roboto", sans-serif;
@@ -23,13 +23,17 @@ $title-font: "Major Mono Display", monospace;
 $other-font: "Righteous", cursive;
 
 .title {
-  color: purple;
-  font-family: $title-font;
-  margin: 0 auto;
-  padding: 5px;
-  font-weight: bold;
-  border: 5px solid #778678;
-  border-radius: 10px;
-  background: #000000;
-  width: 400px;
+	color: purple;
+	font-family: $title-font;
+	margin: 0 auto;
+	padding: 5px;
+	font-weight: bold;
+	border: 5px solid #778678;
+	border-radius: 10px;
+	background: #000000;
+	width: 400px;
+	position: absolute;
+	top: 10px;
+	right: 30%;
+	left: 30%;
 }
