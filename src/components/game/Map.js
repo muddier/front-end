@@ -13,7 +13,8 @@ function Room({ room }) {
             height: "40px",
             width: "40px",
             display: "inline-flex",
-            margin: "5px"
+            margin: "5px",
+            userSelect: "none"
           }}
         />
       ) : (
