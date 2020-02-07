@@ -24,7 +24,7 @@ function Game() {
       .catch(err => {
         return err
       });
-  }, []);
+  }, [currentRoom.description]);
 
   const moveRooms = (e, direction) => {
     e.preventDefault();
@@ -81,7 +81,7 @@ function Game() {
             flexDirection: "row-reverse",
             justifyContent: "center",
             margin: "10px",
-            border: "1px solid silver",
+            border: "5px solid #778678",
             borderRadius: "10px"
           }}
         >

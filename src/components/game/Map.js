@@ -92,7 +92,7 @@ function Map({ currentRoom }) {
         flexDirection: "column",
         width: '550px',
         height: '550px',
-        borderRadius: "10px 0 0 10px"
+        borderRadius: "5px 0 0 5px"
       }}
     >
       {rooms.slice(y_coor, (y_coor + 11)).map((row, index) => {
