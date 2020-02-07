@@ -2,6 +2,25 @@
     align-self: stretch;
 }
 
+.player-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 5px solid #778678;
+    font-family: VT323;
+    padding: 0px 10px;
+    border-radius: 10px;
+    min-width: 300px;
+    max-width: 300px;
+    margin: 10px;
+    color: #35A65A;
+}
+
+.player-stats p{
+    padding-top: 10px;
+    font-size: 18px;
+}
+
 .stats-display {
     display: flex;
     flex-direction: column;
@@ -18,6 +37,10 @@
     padding: 5px 10px;
     margin: 10px;
     font-size: 1.3rem;
+}
+
+.stats-display p{
+    margin: 0px;
 }
 
 .hide-battle {

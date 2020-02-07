@@ -4,7 +4,7 @@ function SideBar(props) {
   console.log('SIDEBAR PROPS', props)
   return (
     <div style={{ background: "#000", borderRadius: "0 10px 0 0" }}>
-      <p
+      {/* <p
         style={{
           fontFamily: "Major Mono Display",
           fontSize: "1.3rem",
@@ -44,7 +44,7 @@ function SideBar(props) {
       }}
       >
       Honey: {props.currentRoom.honey}
-      </p>
+      </p> */}
       <p style={{ color: "#F89500" }}>Players in the room:</p>
       <ul
         style={{
