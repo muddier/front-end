@@ -11,8 +11,8 @@ function Player() {
         width: "40px",
         margin: "5px",
         position: "absolute",
-        left: "50%",
-        top: "50%",
+        left: "49%",
+        top: "49%",
         transform: 'translate(-50%, -50%)'
       }}
     >

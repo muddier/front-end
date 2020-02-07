@@ -17,10 +17,6 @@ function Game() {
       .then(res => {
         setCurrentRoom(res.data);
       })
-      .then(res => {
-        axiosWithAuth()
-        .post("https://mudierthegame.herokuapp.com/api/adv/say/", {message: currentRoom.description} )
-      })
       .catch(err => {
         return err
       });

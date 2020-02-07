@@ -43,7 +43,11 @@ function Chat({roomId, charactersData}) {
 
     useEffect(() => {        
         setChat([])
-    }, [roomId])
+        
+        axiosWithAuth()
+            .post("https://mudierthegame.herokuapp.com/api/adv/say/", {message: charactersData.description} )
+
+    }, [charactersData.description, roomId])
 
     return (
         <div className="chat-box">
