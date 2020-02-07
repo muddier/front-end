@@ -12,11 +12,11 @@ function Home() {
           display: "grid",
           gridTemplateColumns: "60% 40%",
           height: "400px",
+          width: "80%",
           border: "solid 1px silver",
           borderRadius: "10px",
           padding: "25px",
-          marginTop: "30px",
-          marginBottom: "50px",
+          margin: "30px auto 50px auto",
           backgroundColor: "black",
           color: "#99E550"
         }}
@@ -28,7 +28,14 @@ function Home() {
             <img src={bee} alt="bee" />
           </figure>
         </div>
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
           <h2>Welcome to Space Beez!</h2>
           <p>
             Space ipsum it suddenly struck me that that tiny pea, pretty and
@@ -40,26 +47,24 @@ function Home() {
             blue, was the Earth. I put up my thumb and shut one eye, and my
             thumb blotted out the planet Earth.
           </p>
+          <NavLink
+            style={{
+              fontSize: "24px",
+              textDecoration: "none",
+              color: "purple",
+              margin: "20px auto",
+              fontWeight: "bold",
+              border: "1px solid silver",
+              borderRadius: "10px",
+              background: "black",
+              padding: "15px 100px"
+            }}
+            to="/signin"
+          >
+            Play Now!
+          </NavLink>
         </div>
       </div>
-      <nav>
-        <NavLink
-          style={{
-            fontSize: "24px",
-            textDecoration: "none",
-            color: "purple",
-            margin: "20px auto",
-            fontWeight: "bold",
-            border: "1px solid silver",
-            borderRadius: "10px",
-            background: "black",
-            padding: "15px 100px"
-          }}
-          to="/signin"
-        >
-          Play Now!
-        </NavLink>
-      </nav>
     </>
   );
 }
