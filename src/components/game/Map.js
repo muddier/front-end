@@ -3,7 +3,6 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import honey from "../../assets/honey.svg";
 
 function Room({ room }) {
-  // console.log(room);
   return (
     <>
       {room ? (
@@ -14,7 +13,8 @@ function Room({ room }) {
             height: "40px",
             width: "40px",
             display: "inline-flex",
-            margin: "5px"
+            margin: "5px",
+            userSelect: "none"
           }}
         />
       ) : (
@@ -55,8 +55,6 @@ function Map({ currentRoom }) {
       // .get('http://localhost:8000/api/adv/matrix')
       .get("https://mudierthegame.herokuapp.com/api/adv/matrix")
       .then(res => {
-        console.log("Matrix Res", res);
-
         // and 5 0's to the beginning of each row then, 
         // Hack function that's just adding 5 rows at the top of 0
         let matrix = res.data.matrix;
@@ -79,7 +77,7 @@ function Map({ currentRoom }) {
         setRooms(res.data.matrix);
       })
       .catch(err => {
-        console.log(err);
+        return err
       });
   }, []);
 

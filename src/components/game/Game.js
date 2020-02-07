@@ -1,13 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import World from "./World";
 import Controls from "./Controls";
 import SideBar from "./SideBar";
 import Chat from './Chat';
 import Actions from './Actions';
+import Stats from './Stats.js'
 
 function Game() {
   const [currentRoom, setCurrentRoom] = useState({});
+  const [battleRes, setBattleRes] = useState('');
 
   useEffect(() => {
     // set the player in the intial room
@@ -15,11 +17,14 @@ function Game() {
       // .get('http://localhost:8000/api/adv/init')
       .get("https://mudierthegame.herokuapp.com/api/adv/init")
       .then(res => {
-        console.log("Response: ", res);
         setCurrentRoom(res.data);
       })
+      .then(res => {
+        axiosWithAuth()
+        .post("https://mudierthegame.herokuapp.com/api/adv/say/", {message: currentRoom.description} )
+      })
       .catch(err => {
-        console.log(err.response);
+        return err
       });
   }, []);
 
@@ -33,11 +38,10 @@ function Game() {
         direction
       })
       .then(res => {
-        console.log(res);
         setCurrentRoom(res.data);
       })
       .catch(err => {
-        console.log(err.response);
+        return err
       });
   };
 
@@ -70,9 +74,29 @@ function Game() {
       // });
   }
   
+
+    const attackMonster = () => {
+      let honeyGained = null;
+      let xpGained = currentRoom.monster.xp;
+      let playerWeight = currentRoom.xp
+      let monsterWeight = currentRoom.monster.xp
+      let roll = Math.random(playerWeight, monsterWeight)
+
+      playerWeight- roll > monsterWeight - roll ?
+      honeyGained = currentRoom.monster.honeyGained :      
+      honeyGained = currentRoom.monster.honeyLost
+      
+      axiosWithAuth()
+      .post("https://mudierthegame.herokuapp.com/api/adv/battle", {honeyGained, xpGained})  
+      .then(res => setBattleRes(res.data))
+      .catch(err => err)
+      
+    }
+
   if (!currentRoom.players) return <h1>Loading...</h1>;
   return (
     <main style={{ display: "flex", margin: "auto 0", justifyContent: "center" }}>
+      <Stats charactersData={currentRoom} battleRes={battleRes} />
       <div
         style={{
           display: "flex",
@@ -107,13 +131,14 @@ function Game() {
               moveRooms={moveRooms}
               nextRooms={currentRoom.nextRooms}
               moveErrMsg={currentRoom.error_msg}
+              attackMonster={attackMonster}
             />
           </div>
           <World currentRoom={currentRoom}/>
         </div>
         <Actions teleport={teleport} xpBoost={xpBoost} />
       </div>
-      <Chat roomId={currentRoom.roomId}/>
+      <Chat roomId={currentRoom.roomId} charactersData={currentRoom}/>
       </main>
   );
 }

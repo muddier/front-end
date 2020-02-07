@@ -28,6 +28,7 @@ function Controls(props) {
     >
       <p>{props.moveErrorMsg}</p>
       <button
+        title="MOVE NORTH"
         className="btn north"
         onClick={e => props.moveRooms(e, "n")}
         style={{
@@ -43,11 +44,12 @@ function Controls(props) {
       </button>
       <div>
         <button
+          title="MOVE WEST"
           className="btn west"
           onClick={e => props.moveRooms(e, "w")}
           style={{
             background: `${directions[3] ? "purple" : "gray"}`,
-            margin: "5px 25px",
+            margin: "5px",
             height: "40px",
             width: "40px",
             color: `${directions[3] ? "#f8c129" : "silver"}`
@@ -57,11 +59,26 @@ function Controls(props) {
           W
         </button>
         <button
+          title="ATTACK"
+          className="btn attack"
+          onClick={e => props.attackMonster()}
+          style={{
+            background: "red",
+            margin: "10px 5px",
+            height: "40px",
+            width: "40px",
+            color: "white"
+          }}
+        >
+          A
+        </button>
+        <button
+          title="MOVE EAST"
           className="btn east"
           onClick={e => props.moveRooms(e, "e")}
           style={{
             background: `${directions[1] ? "purple" : "gray"}`,
-            margin: "5px 25px",
+            margin: "5px",
             height: "40px",
             width: "40px",
             color: `${directions[1] ? "#f8c129" : "silver"}`
@@ -72,6 +89,7 @@ function Controls(props) {
         </button>
       </div>
       <button
+        title="MOVE SOUTH"
         className="btn south"
         onClick={e => props.moveRooms(e, "s")}
         style={{
