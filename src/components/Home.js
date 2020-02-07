@@ -69,10 +69,10 @@ function Home() {
             style={{
               fontSize: "38px",
               textDecoration: "none",
-              color: "silver",
+              color: "#dadada",
               margin: "20px auto",
               fontWeight: "bold",
-              border: "2px solid silver",
+              border: "2px solid #dadada",
               borderRadius: "10px",
               background: "#1d1d1d",
               padding: "10px 30px",
