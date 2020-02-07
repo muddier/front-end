@@ -24,9 +24,10 @@ function SideBar(props) {
         fontFamily: "Major Mono Display",
         fontSize: "20px",
         borderTop: "1px solid silver",
+        paddingTop: "5px"
       }}
       >
-      XP: {props.currentRoom.honey}
+      XP: {props.currentRoom.xp}
       </p>
       <p
       style={{
@@ -35,9 +36,11 @@ function SideBar(props) {
         textTransform: "capitalize",
         fontFamily: "Major Mono Display",
         fontSize: "20px",
+        borderBottom: "1px solid silver",
+        paddingBottom:"5px"
       }}
       >
-      Honey: {props.currentRoom.xp}
+      Honey: {props.currentRoom.honey}
       </p>
       <p style={{ color: "#F89500" }}>Players in the room:</p>
       <ul
