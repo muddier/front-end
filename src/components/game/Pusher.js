@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 import {usePrevious} from '../utils/usePrevious';
 import Pusher from 'pusher-js';
 
-const pusher = new Pusher('2dad5e9a4335ac2f740f', {
+const pusher = new Pusher('0eed8913739ddced563b', {
     cluster: 'us2',
     forceTLS: true
 });
