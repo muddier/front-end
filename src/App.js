@@ -23,7 +23,7 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route path="/signup" component={SignUp} />
       <Route path="/signin" component={SignIn} />
-      <Route path='/leaderboard' component={Leaderboard} />
+      <Route path="/leaderboard" component={Leaderboard} />
       <PrivateRoute path="/game" component={Game} />
     </div>
   );

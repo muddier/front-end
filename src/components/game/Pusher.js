@@ -12,7 +12,6 @@ const PusherSubscription = ({ roomId, setChat }) => {
 	const prevRoomId = usePrevious(roomId);
 
 	useEffect(() => {        
-        Pusher.logToConsole = true;
 		if(prevRoomId !== roomId){
 			pusher.unsubscribe(`room-${prevRoomId}`)
 		}

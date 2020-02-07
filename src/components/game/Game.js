@@ -4,7 +4,9 @@ import World from "./World";
 import Controls from "./Controls";
 import SideBar from "./SideBar";
 import Chat from './Chat';
+import Actions from './Actions';
 import Stats from './Stats.js'
+
 function Game() {
   const [currentRoom, setCurrentRoom] = useState({});
   const [battleRes, setBattleRes] = useState('');
@@ -39,6 +41,36 @@ function Game() {
       });
   };
 
+  const teleport = () => {
+    axiosWithAuth()
+      // .post('http://localhost:8000/api/adv/teleport')
+      .post("https://mudierthegame.herokuapp.com/api/adv/teleport")
+      .then(res => {
+        console.log('Teleport Res', res);
+        setCurrentRoom(res.data);
+      })
+      .catch(err => {
+        alert(err.response.data.error_msg);
+      });
+  }
+
+  const xpBoost = (xpBoost) => {
+    axiosWithAuth()
+      // .post('http://localhost:8000/api/adv/boost', xpBoost)
+      .post("https://mudierthegame.herokuapp.com/api/adv/boost", xpBoost)
+      .then(res => {
+        console.log(res);
+        // setCurrentRoom(res.data);
+        // 
+        // PUT SETTIMEOUT HERE to decrement the temporary boost
+        // You can use (xpBoost.temp !== 0){ setTimeout(() => xp - xpBoost.xp)} 
+      })
+      // .catch(err => {
+      //   console.log(err.response);
+      // });
+  }
+  
+
     const attackMonster = () => {
       let honeyGained = null;
       let xpGained = currentRoom.monster.xp;
@@ -56,8 +88,7 @@ function Game() {
       .catch(err => err)
       
     }
-  console.log('GAME', currentRoom)
-  console.log('BATTLERES', battleRes)
+
   if (!currentRoom.players) return <h1>Loading...</h1>;
   return (
     <main style={{ display: "flex", margin: "auto 0", justifyContent: "center" }}>
@@ -101,7 +132,7 @@ function Game() {
           </div>
           <World currentRoom={currentRoom}/>
         </div>
-        
+        <Actions teleport={teleport} xpBoost={xpBoost} />
       </div>
       <Chat roomId={currentRoom.roomId} charactersData={currentRoom}/>
       </main>
