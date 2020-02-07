@@ -94,7 +94,8 @@ function SignUp(props) {
               style={{
                 background: "#1d1d1d",
                 color: "#fff",
-                border: "1px solid #F8C129"
+                border: "1px solid #F8C129",
+                minWidth: '465px'
               }}
             />
             <Form.Label>password</Form.Label>
@@ -106,7 +107,8 @@ function SignUp(props) {
               style={{
                 background: "#1d1d1d",
                 color: "#fff",
-                border: "1px solid #F8C129"
+                border: "1px solid #F8C129",
+                minWidth: '465px'
               }}
             />
             <Form.Label>confirm password</Form.Label>
@@ -118,7 +120,8 @@ function SignUp(props) {
               style={{
                 background: "#1d1d1d",
                 color: "#fff",
-                border: "1px solid #F8C129"
+                border: "1px solid #F8C129",
+                minWidth: '465px'
               }}
             />
             {mainErrorMsg ? (

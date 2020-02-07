@@ -81,7 +81,8 @@ function SignIn(props) {
               style={{
                 background: "#1d1d1d",
                 color: "#fff",
-                border: "1px solid #F8C129"
+                border: "1px solid #F8C129",
+                minWidth: '465px'
               }}
             />
             <Form.Label>password</Form.Label>
@@ -93,7 +94,8 @@ function SignIn(props) {
               style={{
                 background: "#1d1d1d",
                 color: "#fff",
-                border: "1px solid #F8C129"
+                border: "1px solid #F8C129",
+                minWidth: '465px'
               }}
             />
             {mainErrorMsg ? (
