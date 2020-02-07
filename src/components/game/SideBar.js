@@ -3,7 +3,7 @@ import React from "react";
 function SideBar(props) {
   console.log('SIDEBAR PROPS', props)
   return (
-    <div style={{ background: "#000", borderRadius: "0 10px 0 0" }}>
+    <div style={{ background: "#000", borderRadius: "0 10px 0 0", marginTop: '10px' }}>
       {/* <p
         style={{
           fontFamily: "Major Mono Display",
