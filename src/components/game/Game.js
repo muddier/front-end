@@ -76,15 +76,25 @@ function Game() {
       let xpGained = currentRoom.monster.xp;
       let playerWeight = currentRoom.xp
       let monsterWeight = currentRoom.monster.xp
-      let roll = Math.random(playerWeight, monsterWeight)
+      let playerRoll = Math.random() * playerWeight
+      let monsterRoll = Math.random() * monsterWeight
 
-      playerWeight- roll > monsterWeight - roll ?
+      playerRoll > monsterRoll ?
       honeyGained = currentRoom.monster.honeyGained :      
-      honeyGained = currentRoom.monster.honeyLost
+      honeyGained = -currentRoom.monster.honeyLost
+
+      if(honeyGained > 0){
+        alert(`You won! You just gained ${honeyGained} honey and ${xpGained} xp`)
+      }else{
+        alert(`Oh no! The ${currentRoom.monster.name} beat you! You lost  ${-honeyGained} honey but still gained ${xpGained} xp`)
+      }
       
       axiosWithAuth()
       .post("https://mudierthegame.herokuapp.com/api/adv/battle", {honeyGained, xpGained})  
-      .then(res => setBattleRes(res.data))
+      .then(res => {
+        setCurrentRoom({...currentRoom, 'xp': res.data.xp, 'honey': res.data.honey})
+        setBattleRes(res.data)
+      })
       .catch(err => err)
       
     }
