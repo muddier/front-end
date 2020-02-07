@@ -1,47 +1,50 @@
 .chat-box {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
 }
 
 .room-name {
-    margin: auto;
-    font-size: 1.8rem;
-    text-transform: uppercase;
+  margin: auto;
+  font-size: 1.8rem;
+  text-transform: uppercase;
 }
 
 .screen {
- border: 5px solid #778678;
-    border-radius: 10px;
-    font-family: VT323;
-    background: #121D17;
-    color: #35A65A;
-    text-align: start;
-    padding: 5px 10px 0px 10px;
-    margin: 10px;
-    width: 300px;   
+  border: 5px solid #778678;
+  border-radius: 10px;
+  font-family: VT323;
+  background: #121d17;
+  color: #35a65a;
+  text-align: start;
+  padding: 5px 10px 0px 10px;
+  margin: 10px 0;
+  width: 300px;
 }
 .chat-display {
-    height: 375px;
-    position: relative;
-    margin: 10px;
-    overflow: scroll;
-    float: left;
-    transform: rotate(180deg);
+  height: 375px;
+  position: relative;
+  margin: 10px 0;
+  overflow: scroll;
+  float: left;
+  transform: rotate(180deg);
 }
 
-::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-track-piece, ::-webkit-scrollbar-thumb{
-    display: none;
+::-webkit-scrollbar,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-thumb {
+  display: none;
 }
 
 input {
-    border: 5px solid #778678;
-    border-radius: 10px;
-    font-family: VT323;
-    background: #121D17;
-    color: #35A65A;
-    text-align: start;
-    padding: 5px 10px;
-    max-width: 300px;
+  border: 5px solid #778678;
+  border-radius: 10px;
+  font-family: VT323;
+  background: #121d17;
+  color: #35a65a;
+  text-align: start;
+  padding: 5px 10px;
+  max-width: 300px;
 }
