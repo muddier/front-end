@@ -7,11 +7,14 @@ function SideBar(props) {
       <p
         style={{
           fontFamily: "Major Mono Display",
-          fontSize: "24px",
+          fontSize: "1.3rem",
           background: "purple",
           margin: "20px",
           padding: "10px",
-          borderRadius: "10px"
+          borderRadius: "10px",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+          overflowX: "hidden"    
         }}
       >
         {props.currentRoom.name}
