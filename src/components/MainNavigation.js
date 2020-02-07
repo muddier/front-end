@@ -13,10 +13,11 @@ function MainNavigation(props) {
         <>
           <NavLink
             style={{
-              fontSize: "14px",
+              fontSize: "16px",
               margin: "8px",
               background: "#F89500",
               color: "#1d1d1d",
+              fontWeight: '600',
               padding: "9px",
               borderRadius: "10px",
               textDecoration: "none"
@@ -27,10 +28,11 @@ function MainNavigation(props) {
           </NavLink>
           <NavLink
             style={{
-              fontSize: "14px",
+              fontSize: "16px",
               margin: "8px",
               background: "#F89500",
               color: "#1d1d1d",
+              fontWeight: '600',
               padding: "9px",
               borderRadius: "10px",
               textDecoration: "none"
@@ -44,7 +46,8 @@ function MainNavigation(props) {
             style={{
               cursor: "pointer",
               color: "silver",
-              fontSize: "14px",
+              fontSize: "16px",
+              fontWeight: '600',
               margin: "8px",
               border: "1px solid silver",
               padding: "6px 10px",

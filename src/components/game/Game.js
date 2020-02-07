@@ -73,7 +73,7 @@ function Game() {
 
     const attackMonster = () => {
       let honeyGained = null;
-      let xpGained = currentRoom.monster.xp;
+      let xpGained = currentRoom.monster.xpGained;
       let playerWeight = currentRoom.xp
       let monsterWeight = currentRoom.monster.xp
       let playerRoll = Math.random() * playerWeight
@@ -86,7 +86,7 @@ function Game() {
       if(honeyGained > 0){
         alert(`You won! You just gained ${honeyGained} honey and ${xpGained} xp`)
       }else{
-        alert(`Oh no! The ${currentRoom.monster.name} beat you! You lost  ${-honeyGained} honey but still gained ${xpGained} xp`)
+        alert(`Oh no! The ${currentRoom.monster.name} beat you! You lost  ${-honeyGained} honey.`)
       }
       
       axiosWithAuth()
